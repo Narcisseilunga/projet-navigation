@@ -5,6 +5,7 @@
 
 package entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,7 +23,9 @@ public class Lieu {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     private int id;
+    @Column(name="nom_lieu")
     private String nom;
     private String description;
     private double longitude;

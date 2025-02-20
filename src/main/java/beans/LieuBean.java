@@ -1,22 +1,25 @@
 package beans;
 
-import jakarta.annotation.ManagedBean;
-import jakarta.enterprise.context.RequestScoped;
-import jakarta.faces.context.FacesContext;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import java.io.IOException;
+import jakarta.enterprise.context.RequestScoped;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import business.LieuEntrepriseBean;
 
-@ManagedBean
-@Named("lieuBean")
+@Named(value = "lieuBean")
 @RequestScoped
-public class LieuBean {
+public class LieuBean implements Serializable {
+
     private String nom;
     private String description;
-    private double latitude;
     private double longitude;
-    private static List<Lieu> listeLieux = new ArrayList<>();
+    private double latitude;
+    private List<Lieu> lieux = new ArrayList<>();
+
+    @Inject
+    private LieuEntrepriseBean lieuEntrepriseBean;
 
     // Getters et Setters
     public String getNom() { return nom; }
@@ -25,31 +28,18 @@ public class LieuBean {
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
 
-    public double getLatitude() { return latitude; }
-    public void setLatitude(double latitude) { this.latitude = latitude; }
-
     public double getLongitude() { return longitude; }
     public void setLongitude(double longitude) { this.longitude = longitude; }
 
-    public List<Lieu> getListeLieux() { return listeLieux; }
+    public double getLatitude() { return latitude; }
+    public void setLatitude(double latitude) { this.latitude = latitude; }
 
+    // Méthode pour récupérer la liste des lieux
+    public List<entities.Lieu> getLieux() { return lieuEntrepriseBean.listerTousLesLieux(); }
     // Méthode pour ajouter un lieu
     public void ajouterLieu() {
-        Lieu lieu = new Lieu(nom, description, latitude, longitude);
-        listeLieux.add(lieu);
-        
-        // Réinitialisation des champs après l'ajout
-        this.nom = "";
-        this.description = "";
-        this.latitude = 0.0;
-        this.longitude = 0.0;
-    }
-    public void retourMenu(){
-        try{
-            FacesContext.getCurrentInstance().getExternalContext()
-                    .redirect("home.xhtml");
-        } catch(IOException e){
-            e.printStackTrace();
+        if (nom != null && !nom.isEmpty() && description != null && !description.isEmpty()) {
+            lieuEntrepriseBean.ajouterLieuEntreprise(nom, description, latitude, longitude);
         }
     }
 

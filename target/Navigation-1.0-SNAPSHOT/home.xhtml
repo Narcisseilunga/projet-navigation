@@ -1,13 +1,15 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="jakarta.faces.html">
-    <head>
-      <title>Home</title>
-      <style>
+      xmlns:h="jakarta.faces.html">
+<head>
+    <title>Home</title>
+    <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
+            background-image: url('images/mangas.jpg');
+            background-size: cover;
+            background-position: center;
             margin: 0;
             padding: 0;
             display: flex;
@@ -17,7 +19,7 @@
         }
 
         .container {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.8); /* Transparent background */
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -53,17 +55,17 @@
             background-color: #1e7e34;
             transform: translateY(0);
         }
-      </style>
-    </head>
-    <body>
-      <div class="container">
+    </style>
+</head>
+<body>
+    <div class="container">
         <h1>Accueil</h1>
         <h:form>
             <h:commandButton value="Ajouter" action="#{navigationController.lieu()}" styleClass="btn"/>
             <h:commandButton value="Visiter" action="#{navigationController.visiter()}" styleClass="btn"/>
             <h:commandButton value="A propos" action="#{navigationController.voirApropos()}" styleClass="btn"/>
             <h:commandButton value="Retour" action="#{navigationController.retour()}" styleClass="btn"/>
-        </h:form>    
-      </div>
-    </body>
+        </h:form>
+    </div>
+</body>
 </html>
