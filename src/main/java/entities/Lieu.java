@@ -1,11 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
-package entities;
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,25 +7,24 @@ import jakarta.persistence.Table;
 
 /**
  *
- * @author Casterman nacio
+ * @author user
  */
 
 @Entity
 @Table(name = "lieu")
 public class Lieu {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
     private int id;
-    @Column(name="nom_lieu")
     private String nom;
     private String description;
     private double longitude;
     private double latitude;
-    
+
+
     public Lieu() {
     }
+
     public Lieu(String nom, String description, double longitude, double latitude) {
         this.nom = nom;
         this.description = description;
@@ -52,4 +44,3 @@ public class Lieu {
     public double getLatitude() { return latitude; }
     public void setLatitude(double latitude) { this.latitude = latitude; }
 }
-

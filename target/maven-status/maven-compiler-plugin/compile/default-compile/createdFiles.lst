@@ -1,7 +1,7 @@
-business\LieuEntrepriseBean.class
 com\mycompany\navigation\resources\JakartaEE10Resource.class
+Lieu.class
 beans\LieuBean.class
-entities\Lieu.class
+LieuEntrepriseBean.class
 com\mycompany\navigation\JakartaRestConfiguration.class
 beans\LieuBean$Lieu.class
 beans\NavigationBean.class

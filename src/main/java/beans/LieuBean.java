@@ -1,25 +1,20 @@
 package beans;
 
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
+import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.RequestScoped;
-import java.io.Serializable;
+import jakarta.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
-import business.LieuEntrepriseBean;
 
-@Named(value = "lieuBean")
+@ManagedBean
+@Named("lieuBean")
 @RequestScoped
-public class LieuBean implements Serializable {
-
+public class LieuBean {
     private String nom;
     private String description;
-    private double longitude;
     private double latitude;
-    private List<Lieu> lieux = new ArrayList<>();
-
-    @Inject
-    private LieuEntrepriseBean lieuEntrepriseBean;
+    private double longitude;
+    private static List<Lieu> listeLieux = new ArrayList<>();
 
     // Getters et Setters
     public String getNom() { return nom; }
@@ -28,19 +23,24 @@ public class LieuBean implements Serializable {
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
 
-    public double getLongitude() { return longitude; }
-    public void setLongitude(double longitude) { this.longitude = longitude; }
-
     public double getLatitude() { return latitude; }
     public void setLatitude(double latitude) { this.latitude = latitude; }
 
-    // Méthode pour récupérer la liste des lieux
-    public List<entities.Lieu> getLieux() { return lieuEntrepriseBean.listerTousLesLieux(); }
+    public double getLongitude() { return longitude; }
+    public void setLongitude(double longitude) { this.longitude = longitude; }
+
+    public List<Lieu> getListeLieux() { return listeLieux; }
+
     // Méthode pour ajouter un lieu
     public void ajouterLieu() {
-        if (nom != null && !nom.isEmpty() && description != null && !description.isEmpty()) {
-            lieuEntrepriseBean.ajouterLieuEntreprise(nom, description, latitude, longitude);
-        }
+        Lieu lieu = new Lieu(nom, description, latitude, longitude);
+        listeLieux.add(lieu);
+        
+        // Réinitialisation des champs après l'ajout
+        this.nom = "";
+        this.description = "";
+        this.latitude = 0.0;
+        this.longitude = 0.0;
     }
 
     // Classe interne pour stocker les lieux
