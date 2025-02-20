@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="jakarta.faces.html">
+    <head>
+      <title>Visite</title>
+      <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .image-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .image-section img {
+            width: 48%;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+      </style>
+    </head>
+    
+    <body>
+      <div class="container">
+        <h1>Visitez-nous</h1>
+        <h2>Selamat datang</h2>
+        
+        <div class="image-section">
+            <img src="images/danse.jpg" alt="Danse" />
+            <img src="images/people.jpg" alt="People" />
+            <img src="images/humans.jpg" alt="Human" />
+            <img src="images/indonesie.jfif" alt="Indonesie" />
+        </div>
+        
+        <h:form>
+           <h:commandButton value="Retour" action="#{navigationController.retourMenu()}" styleClass="btn"/>
+        </h:form>   
+      </div>
+    </body>
+</html>

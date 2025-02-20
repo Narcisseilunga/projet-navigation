@@ -1,0 +1,5 @@
+com\mycompany\navigation\JakartaRestConfiguration.class
+beans\LieuBean$Lieu.class
+com\mycompany\navigation\resources\JakartaEE10Resource.class
+beans\LieuBean.class
+beans\NavigationBean.class
