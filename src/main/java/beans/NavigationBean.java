@@ -11,8 +11,9 @@ import java.io.IOException;
 
 /**
  *
- * @author Jenovic Mwambay
+ * @author Casterman nacio
  */
+
 @Named(value = "navigationController")
 @RequestScoped
 public class NavigationBean {

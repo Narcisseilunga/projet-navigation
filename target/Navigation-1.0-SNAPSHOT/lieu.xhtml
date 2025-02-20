@@ -1,132 +1,131 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:f="jakarta.faces.core">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+                  xmlns:f="jakarta.faces.core">
+
+      >
 <head>
     <title>Ajouter un Lieu</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #e0f7fa;
-        margin: 0;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .container {
-        width: 50%;
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-      }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .container {
+            width: 50%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-      h1 {
-        text-align: center;
-        color: #00796b;
-      }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
 
-      .form-group {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 15px;
-      }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
 
-      label {
-        font-weight: bold;
-        margin-bottom: 5px;
-        color: #00796b;
-      }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
 
-      input, textarea {
-        padding: 10px;
-        border: 1px solid #00796b;
-        border-radius: 5px;
-        font-size: 14px;
-      }
+        input, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
 
-      .btn {
-        background-color: #00796b;
-        color: white;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-      }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
 
-      .btn:hover {
-        background-color: #004d40;
-      }
+        .btn:hover {
+            background-color: #0056b3;
+        }
 
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-      }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
 
-      th, td {
-        padding: 10px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-      }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
 
-      th {
-        background-color: #00796b;
-        color: white;
-      }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-      <h1>Ajouter un Lieu</h1>
-      <h:form>
-        <div class="form-group">
-            <h:outputLabel for="nom" value="Nom :" />
-            <h:inputText id="nom" value="#{lieuBean.nom}" required="true" />
-        </div>
+        <h1>Ajouter un Lieu</h1>
+        <h:form>
+            <div class="form-group">
+                <h:outputLabel for="nom" value="Nom :" />
+                <h:inputText id="nom" value="#{lieuBean.nom}" required="true" />
+            </div>
 
-        <div class="form-group">
-            <h:outputLabel for="description" value="Description :" />
-            <h:inputTextarea id="description" value="#{lieuBean.description}" required="true" />
-        </div>
+            <div class="form-group">
+                <h:outputLabel for="description" value="Description :" />
+                <h:inputTextarea id="description" value="#{lieuBean.description}" required="true" />
+            </div>
 
-        <div class="form-group">
-            <h:outputLabel for="latitude" value="Latitude :" />
-            <h:inputText id="latitude" value="#{lieuBean.latitude}" required="true" />
-        </div>
+            <div class="form-group">
+                <h:outputLabel for="latitude" value="Latitude :" />
+                <h:inputText id="latitude" value="#{lieuBean.latitude}" required="true" />
+            </div>
 
-        <div class="form-group">
-            <h:outputLabel for="longitude" value="Longitude :" />
-            <h:inputText id="longitude" value="#{lieuBean.longitude}" required="true" />
-        </div>
-        
-        <h:commandButton value="Ajouter" action="#{lieuBean.ajouterLieu}" styleClass="btn"/>
-        <h:commandButton value="Retour" action="#{navigationController.retourMenu()}" styleClass="btn"/>
+            <div class="form-group">
+                <h:outputLabel for="longitude" value="Longitude :" />
+                <h:inputText id="longitude" value="#{lieuBean.longitude}" required="true" />
+            </div>
 
-      </h:form>
+            <h:commandButton value="Ajouter" action="#{lieuBean.ajouterLieu}" styleClass="btn"/>
+        </h:form>
 
-      <h2>Liste des Lieux</h2>
-      <h:dataTable value="#{lieuBean.listeLieux}" var="lieu" border="1">
-        <h:column>
-            <f:facet name="header">Nom</f:facet>
-            #{lieu.nom}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Description</f:facet>
-            #{lieu.description}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Latitude</f:facet>
-            #{lieu.latitude}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Longitude</f:facet>
-            #{lieu.longitude}
-        </h:column>
-      </h:dataTable>
+        <h2>Liste des Lieux</h2>
+        <h:dataTable value="#{lieuBean.listeLieux}" var="lieu" border="1">
+            <h:column>
+                <f:facet name="header">Nom</f:facet>
+                #{lieu.nom}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Description</f:facet>
+                #{lieu.description}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Latitude</f:facet>
+                #{lieu.latitude}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Longitude</f:facet>
+                #{lieu.longitude}
+            </h:column>
+        </h:dataTable>
     </div>
 </body>
 </html>
